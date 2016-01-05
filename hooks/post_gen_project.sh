@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "{{cookiecutter.project_name}}"
+echo "{{ cookiecutter.project_name }}"
