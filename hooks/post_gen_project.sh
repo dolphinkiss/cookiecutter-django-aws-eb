@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "{{ cookiecutter.project_name }}"
+mv settings_production.py "{{ cookiecutter.project_name }}/"
