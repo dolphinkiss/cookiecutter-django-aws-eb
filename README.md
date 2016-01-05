@@ -1,31 +1,29 @@
-# django-startproject-template-copy from django 1.9
+# cookiecutter template just like the built in *django-admin.py startproject* :)
 
-This is just to simplify for the ones who looked where the project template is located, to create your own.
+This template isn't really useful, as it does the same as *django-admin.py startproject*. But I created it
+to keep as upstream for other cookiecutter django templates.
 
-The files are copied **as is** from (https://github.com/django/django/tree/1.9.1/django/conf/project_template) 
-commit id 76e0d43 (tag 1.9.1).
+## Prerequisites
+
+* cookiecutter (https://github.com/audreyr/cookiecutter)
+* virtualenv
+* bash
+
+## Template variables
+
+* *project_name*: django project name, just like in startproject
+* *django_version*: what django version to install
+* *keep_virtualenv*: if we should keep the virtualenvironment that was created in the pre hook script,
+  any non "yes" value will remove the .ve directory
 
 ## Usage
 
-* Create a Virtualenv
-* Install django into the Virtualenv
-
-Fork/download this project, make your changes, and then start your projects using:
-
 ```
-# django-admin.py startproject --template <local template path or github link> <projectname> 
+# cookiecutter https://github.com/dolphinkiss/cookiecutter-django-startproject
 ```
 
-If you want also have none py files, you need to use the *--extensions=py* argument to the startproject command.
+## How it works
 
-Example that will use py and md files:
-
-```
-# virtualenv .ve
-# source .ve/bin/activate
-# pip install django
-# django-admin.py startproject \
-    --template https://github.com/dolphinkiss/django-startproject-template-copy/archive/master.zip \
-    --extensions=py,md
-```
-
+The pre-generation hook will create a virtualenvironment in .ve and then install the specific django
+version inside of the virtualenvironment. Then it will run *django-admin.py startproject project_name .*.
+If you have answered a non-yes answer to keep_virtuelenv, it will delete the .ve directory.

@@ -1,0 +1,5 @@
+{
+  "project_name": "django_project_name",
+  "django_version": "1.9",
+  "keep_virtualenv": "yes"
+}
