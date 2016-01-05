@@ -18,9 +18,9 @@ RUN pip install virtualenv
 # Setting up project virtual environment
 #######################################################
 
-ADD . /app/{{ project_name }}
-RUN virtualenv /app/{{ project_name }}/venv
-RUN /app/{{ project_name }}/venv/bin/pip install -r /app/{{ project_name }}/requirements/production.txt
+ADD . /app/
+RUN virtualenv /app/venv
+RUN /app/venv/bin/pip install -r /app/requirements/production.txt
 
 
 #######################################################
