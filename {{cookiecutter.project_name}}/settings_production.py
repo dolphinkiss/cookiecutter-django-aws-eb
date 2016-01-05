@@ -1,4 +1,4 @@
-from .settings import *
+from project_name.settings import *
 
 INSTALLED_APPS += [
     'storages',

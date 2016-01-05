@@ -1,1 +1,2 @@
 django=={{ cookiecutter.django_version }}
+psycopg2==2.5.4
