@@ -29,10 +29,10 @@ RUN /app/venv/bin/pip install -r /app/requirements/production.txt
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
-ADD deploy/supervisor_django.conf /etc/supervisor/conf.d/uwsgi_{{ project_name }}.conf
-ADD deploy/nginx.conf /etc/nginx/sites-available/{{ project_name }}.conf
+ADD deploy/supervisor_django.conf /etc/supervisor/conf.d/app.conf
+ADD deploy/nginx.conf /etc/nginx/sites-available/app.conf
 
-RUN ln -s /etc/nginx/sites-available/{{ project_name }}.conf /etc/nginx/sites-enabled
+RUN ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled
 RUN rm -f /etc/nginx/sites-enabled/default
 
 
