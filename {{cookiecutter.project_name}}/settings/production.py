@@ -1,4 +1,4 @@
-from .settings import *
+from .common import *
 
 INSTALLED_APPS += [
     'storages',
