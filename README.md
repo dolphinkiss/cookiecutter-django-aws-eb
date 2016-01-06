@@ -5,6 +5,19 @@ This template is for you whom might want to get a Django app running on AWS Elas
 Using AWS EB Docker deployments is not the only way to get your Django app running on AWS, take a look here as well: 
 (http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-apps.html).
 
+
+## What you get
+
+Some basic setup for getting a working AWS EB Docker Django deployment. The docker container runs **uwsgi+nginx** and
+exposes port 80 that is mapped to the AWS Elastic Load Balancer. Of course you optionally get a working local
+development environment as well.
+
+
+## What is next after using this cookiecutter?
+
+Take a look at the generated README.md for information how to start up your first AWS Elastic Beanstalk app deployment.
+
+
 ## Template variables
 
 * **project_name**:    django project name, just like in startproject
@@ -13,6 +26,7 @@ Using AWS EB Docker deployments is not the only way to get your Django app runni
   create postgres database
 * **virtualenv_bin**:  location to virtualbin binary, in case it is not in your path, or if you wanna use some other
   virtualenv binary
+
 
 ## Prerequisites
 
@@ -23,11 +37,13 @@ Windows users, sorry, don't think this will work for you :) Pull requests for Wi
 * bash
 * postgres (createdb), required if **setup_local_env=yes**
 
+
 ## Usage
 
 ```
 # cookiecutter https://github.com/dolphinkiss/cookiecutter-django-aws-eb-docker
 ```
+
 
 ## The hooks
 
@@ -57,7 +73,3 @@ If **virtualenv_bin=yes** then the post-generation hook will:
 If **virtualenv_bin!=yes** then the post-generation hook will:
 
 * Remove the .ve directory
-
-## What is next?
-
-Take a look at the generated README.md file for information how to start up your first AWS Elastic Beanstalk app.
