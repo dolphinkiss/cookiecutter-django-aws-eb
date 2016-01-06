@@ -1,5 +1,5 @@
 {
   "project_name": "myproject",
   "django_version": "1.9.1",
-  "keep_virtualenv": "yes"
+  "setup_local_env": "yes"
 }
