@@ -9,7 +9,6 @@ require_program() {
 echo "---> Running pre-hook script..."
 
 require_program "{{ cookiecutter.virtualenv_bin }}"
-require_program "createdb"
 if [ "{{ cookiecutter.setup_local_env }}" == "yes" ]; then
     require_program "createdb"
 fi
