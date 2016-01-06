@@ -14,8 +14,9 @@ do_install_local_requirements() {
 }
 
 do_patch_manage_py() {
-    mv "{{ cookiecutter.project_name }}/settings.py" "settings/common.py"
-    sed -i "" -e "s/{{ cookiecutter.project_name }}.settings/settings.local/g" "manage.py"
+    mv "settings" "{{ cookiecutter.project_name }}/"
+    mv "{{ cookiecutter.project_name }}/settings.py" "{{ cookiecutter.project_name }}/settings/common.py"
+    sed -i "" -e "s/{{ cookiecutter.project_name }}.settings/{{ cookiecutter.project_name }}.settings.local/g" "manage.py"
 }
 
 do_remove_ve() {
