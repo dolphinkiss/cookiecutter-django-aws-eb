@@ -22,3 +22,5 @@ DATABASES = {
         'PORT': os.getenv('RDS_PORT'),
     }
 }
+
+SECRET_KEY = env('DJANGO_SECRET_KEY')

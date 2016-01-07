@@ -2,8 +2,8 @@
 
 This template is for you whom might want to get a Django app running on AWS Elastic Beanstalk with Docker. 
 
-Using AWS EB Docker deployments is not the only way to get your Django app running on AWS, take a look here as well: 
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-apps.html).
+Using AWS EB Docker deployments is not the only way to get your Django app running on AWS, take a look at their
+Python app support: (http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-apps.html).
 
 
 ## What you get
