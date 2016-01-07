@@ -1,2 +1,3 @@
 django=={{ cookiecutter.django_version }}
 psycopg2==2.5.4
+whitenoise==2.0.6

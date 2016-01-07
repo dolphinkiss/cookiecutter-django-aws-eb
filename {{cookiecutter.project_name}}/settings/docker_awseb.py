@@ -1,11 +1,10 @@
-from .common import *
+from .docker_common import *
 
 INSTALLED_APPS += [
     'storages',
 ]
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
@@ -21,6 +20,3 @@ DATABASES = {
         'PORT': os.getenv('RDS_PORT'),
     }
 }
-
-DEBUG = False
-ALLOWED_HOSTS = [x.strip() for x in os.getenv('ALLOWED_HOSTS', '').split(',')]

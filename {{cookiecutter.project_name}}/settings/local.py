@@ -6,3 +6,6 @@ DATABASES = {
         'NAME': '{{ cookiecutter.project_name }}',
     }
 }
+
+# DEBUG = False
+# ALLOWED_HOSTS=['*']

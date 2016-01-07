@@ -18,10 +18,16 @@ RUN pip install virtualenv
 # Setting up project virtual environment
 #######################################################
 
-ADD . /app/
-RUN virtualenv /app/venv
-RUN /app/venv/bin/pip install -r /app/requirements/production.txt
+ADD requirements /requirements
+RUN virtualenv /app/.vedocker
+RUN /app/.vedocker/bin/pip install -r /requirements/production.txt
 
+#######################################################
+# Adding application code
+#######################################################
+
+ADD . /app/
+RUN /app/.vedocker/bin/python /app/manage.py collectstatic --noinput
 
 #######################################################
 # Setting up uWSGI with supervisor
