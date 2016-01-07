@@ -20,20 +20,14 @@ do_patch_settings_and_manage_py() {
     COMMON_SETTINGS="{{ cookiecutter.project_name }}/settings/common.py"
 
     mv "{{ cookiecutter.project_name }}/settings.py" "$COMMON_SETTINGS"
-    echo "" >> "$COMMON_SETTINGS"
-    echo "# whitenoise" >> "$COMMON_SETTINGS"
-    echo "STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'" >> "$COMMON_SETTINGS"
-    echo "STATIC_ROOT = os.path.join(BASE_DIR, '..', '.staticfiles')" >> "$COMMON_SETTINGS"
+    cat "settings_extra.py" >> "$COMMON_SETTINGS" && rm "settings_extra.py"
 
     sed -i "" -e "s/{{ cookiecutter.project_name }}.settings/{{ cookiecutter.project_name }}.settings.local/g" "manage.py" "$WSGI_PATH"
 }
 
 do_patch_wsgi_py_whitenoise() {
     WSGI_PATH="{{ cookiecutter.project_name }}/wsgi.py"
-    echo "" >> "$WSGI_PATH"
-    echo "# wraps djangos normal wsgi application in whitenose" >> "$WSGI_PATH"
-    echo "from whitenoise.django import DjangoWhiteNoise" >> "$WSGI_PATH"
-    echo "application = DjangoWhiteNoise(application)" >> "$WSGI_PATH"
+    cat "wsgi_extra.py" >> "$WSGI_PATH" && rm "wsgi_extra.py"
 }
 
 do_remove_ve() {
