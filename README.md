@@ -54,22 +54,23 @@ something harmful, please create a ticket!
 
 The pre-generation hook will create a virtualenvironment in .ve and then install the specific django
 version inside of the virtualenvironment. Then it will run *django-admin.py startproject project_name .*.
-If you have answered a non-yes answer to **setup_local_env**, it will delete the .ve directory.
 
-It will also assure that you have virtualenv and postgres (createdb) available on your path.
+It will also assure that you have virtualenv available on your path. If **setup_local_env=yes** then it will also
+assure that createdb is on your path.
 
 ### hooks/post_gen_project.sh
 
 The post-generation hook will:
 
 * Rename/move <project_name>/settings.py to <project_name>/settings/common.py
-* Patch manage.py to have **<project_name>.settings.local** as default DJANGO_SETTINGS_MODULE.
+* Patch manage.py and wsgi.py to have **<project_name>.settings.local** as default DJANGO_SETTINGS_MODULE.
+* Patch <project_name>/settings/common.py and <project_name>/wsgi.py to have Whitenoise by default
 
-If **virtualenv_bin=yes** then the post-generation hook will:
+If **setup_local_env=yes** then the post-generation hook will:
 
 * Attempt to create the postgres database <project_name>
 * Install requirements/local.txt into the virtualenv
 
-If **virtualenv_bin!=yes** then the post-generation hook will:
+If **setup_local_env!=yes** then the post-generation hook will:
 
 * Remove the .ve directory
