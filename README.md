@@ -41,7 +41,7 @@ Windows users, sorry, don't think this will work for you :) Pull requests for Wi
 ## Usage
 
 ```
-# cookiecutter https://github.com/dolphinkiss/cookiecutter-django-aws-eb-docker
+# cookiecutter https://github.com/dolphinkiss/cookiecutter-django-aws-ebs-docker
 ```
 
 
