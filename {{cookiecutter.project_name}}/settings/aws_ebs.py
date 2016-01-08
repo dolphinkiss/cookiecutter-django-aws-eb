@@ -1,4 +1,4 @@
-from .docker import *
+from .deploy_common import *
 
 INSTALLED_APPS += [
     'storages',
