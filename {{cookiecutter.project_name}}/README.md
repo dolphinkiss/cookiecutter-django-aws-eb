@@ -17,7 +17,7 @@ secret.
 
 ```
 # eb init
-# eb create --database.engine postgres --envvars \
+# eb create -db.engine postgres --envvars \
     'DJANGO_SECRET_KEY=<V>,AWS_ACCESS_KEY_ID=<V>,AWS_SECRET_ACCESS_KEY=<V>,AWS_STORAGE_BUCKET_NAME=<V>'
 ```
 
