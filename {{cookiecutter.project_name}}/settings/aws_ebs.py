@@ -1,4 +1,4 @@
-from .docker_common import *
+from .docker import *
 
 INSTALLED_APPS += [
     'storages',
@@ -23,4 +23,9 @@ DATABASES = {
     }
 }
 
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+{% if cookiecutter.aws_ebs_type == "python" %}
+# we should assure that we don't use /static/ in case we want to keep using whitenoise
+# as there is a default static handler on /static/ that cannot be removed for the moment.
+# See: http://stackoverflow.com/a/34669173/788022
+STATIC_URL = '/staticfiles/'
+{% endif %}

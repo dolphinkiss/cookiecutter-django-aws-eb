@@ -44,12 +44,14 @@ Create a superuser, and you should be able to login:
 ### eb local
 
 If you have docker installed, you can run the container locally. The DJANGO_ALLOWED_HOSTS setting in eb local mode 
-refers to the IP address of the host machine, or in case of OSX the virtual machines shared IP.
+refers to the IP address of the host machine, or in case of OSX the virtual machines shared IP. DJANGO_DATABASE_URL
+is also required. See https://github.com/kennethreitz/dj-database-url#url-schema for supported formats.
 
 ```
 # eb init
-# eb local setenv "DJANGO_SETTINGS_MODULE={{ cookiecutter.project_name }}.settings.docker_local"
+# eb local setenv "DJANGO_SETTINGS_MODULE={{ cookiecutter.project_name }}.settings.docker"
 # eb local setenv "DJANGO_ALLOWED_HOSTS=192.168.99.100"
+# eb local setenv "DJANGO_DATABASE_URL=sqlite:////app/sqlite.db"
 # eb local run
 ```
 
@@ -89,3 +91,10 @@ The Django project created by this, has minimal settings, and not configured to 
 
 Remember that using AWS Elastic Beanstalk will cause charges on your AWS account. If you are a new user, you can use
 the free tier for one year.
+
+
+
+
+## Stuff to add related to python environment
+
+/home/ec2-user/django-manage.sh is script for running management commands
