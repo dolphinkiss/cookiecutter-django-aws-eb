@@ -46,7 +46,7 @@ else
     do_remove_ve
 fi
 
-if [ "{{ cookiecutter.aws_ebs_type }}" != "docker" ]; then
+if [ "{{ cookiecutter.aws_eb_type }}" != "docker" ]; then
     rm Dockerrun.aws.json
 fi
 

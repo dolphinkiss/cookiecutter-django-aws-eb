@@ -44,10 +44,10 @@ Create a superuser, and you should be able to login:
 ### Running management commands on the EC2 instances
 
 There is a script located at /home/ec2-user/django-manage.sh that you can use to run management commands
-{% if cookiecutter.aws_ebs_type == "docker" %}inside of the docker container{% endif %}.
+{% if cookiecutter.aws_eb_type == "docker" %}inside of the docker container{% endif %}.
 
 
-{% if cookiecutter.aws_ebs_type == "docker" %}
+{% if cookiecutter.aws_eb_type == "docker" %}
 ### eb local
 
 If you have docker installed, you can run the container locally. The DJANGO_ALLOWED_HOSTS setting in eb local mode 

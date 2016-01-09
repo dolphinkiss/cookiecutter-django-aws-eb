@@ -8,9 +8,9 @@ require_program() {
 
 echo "---> Running pre-hook script..."
 
-aws_ebs_type="{{ cookiecutter.aws_ebs_type }}"
-if [ "$aws_ebs_type" != "python" ] && [ "$aws_ebs_type" != "docker" ]; then
-    echo "---> aws_ebs_type can only have the value of 'python' or 'docker'"; exit 1;
+aws_eb_type="{{ cookiecutter.aws_eb_type }}"
+if [ "$aws_eb_type" != "python" ] && [ "$aws_eb_type" != "docker" ]; then
+    echo "---> aws_eb_type can only have the value of 'python' or 'docker'"; exit 1;
 fi
 
 require_program "{{ cookiecutter.virtualenv_bin }}"

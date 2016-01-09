@@ -1,4 +1,4 @@
-# this file is here for compatibility with AWS EBS Python Environment, see requirements directory for
+# this file is here for compatibility with AWS EB Python Environment, see requirements directory for
 # complete requirements files
 
 -r requirements/production.txt

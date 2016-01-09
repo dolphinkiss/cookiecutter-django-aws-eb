@@ -33,7 +33,7 @@ Take a look at the generated README.md for information how to deploy up your dja
 
 ## Template variables
 
-* **aws_ebs_type**:    if you want EB python or docker setup
+* **aws_eb_type**:    if you want EB python or docker setup
 * **project_name**:    django project name, just like in startproject
 * **django_version**:  what django version to install
 * **setup_local_env**: if we should keep the virtualenvironment with requirements/local.txt installed and
@@ -55,7 +55,7 @@ Windows users, sorry, don't think this will work for you :) Pull requests for Wi
 ## Usage
 
 ```
-# cookiecutter https://github.com/dolphinkiss/cookiecutter-django-aws-ebs-docker
+# cookiecutter https://github.com/dolphinkiss/cookiecutter-django-aws-eb
 ```
 
 
@@ -72,7 +72,7 @@ version inside of the virtualenvironment. Then it will run *django-admin.py star
 It will also assure that you have virtualenv available on your path. If **setup_local_env=yes** then it will also
 assure that createdb is on your path.
 
-In case **aws_ebs_type!=docker**, the Dockerrun.aws.json file will be deleted.
+In case **aws_eb_type!=docker**, the Dockerrun.aws.json file will be deleted.
 
 ### hooks/post_gen_project.sh
 

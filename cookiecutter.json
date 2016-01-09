@@ -1,5 +1,5 @@
 {
-  "aws_ebs_type": "python/docker",
+  "aws_eb_type": "python/docker",
   "project_name": "myproject",
   "django_version": "1.9.1",
   "setup_local_env": "yes",
