@@ -31,15 +31,23 @@ After it has started up (green), check the CNAME and then set the DJANGO_ALLOWED
 # eb setenv "DJANGO_ALLOWED_HOSTS=<CNAME>"
 ```
 
-When that has completed, just visit **http://<CNAME>/admin**, and it should be bring up the login form.
+When that has completed, just visit **http://<CNAME>/admin**, and it should be bring up the login form. Don't be
+surprised that **http://<CNAME>/** will respond 404, as there is no URL mapping in initial django setup. You have to 
+create your own app for that, that is your job :)
 
 Create a superuser, and you should be able to login:
 
+{% if cookiecutter.aws_eb_type == "docker" %}
 ```
 # eb ssh          # ssh into the EC2 instance
-# sudo docker ps  # remember the container id for later
-# sudo docker exec -it <CONTAINER ID> /app/.vedocker/bin/python /app/manage.py createsuperuser
+# sudo /home/ec2-user/django-manage.sh createsuperuser  # you have to sudo, as it is required to access the container
 ```
+{% else %}
+```
+# eb ssh          # ssh into the EC2 instance
+# /home/ec2-user/django-manage.sh createsuperuser
+```
+{% endif %}
 
 #### Logs
 
@@ -50,10 +58,14 @@ Docker container logs are located at **/var/log/eb-docker/containers/eb-current-
 {% endif %}
 
 
-### Running management commands on the EC2 instances
+#### Running django management commands on the EC2 instances
 
-There is a script located at /home/ec2-user/django-manage.sh that you can use to run management commands
+There is a script located at **/home/ec2-user/django-manage.sh** that you can use to run management commands
 {% if cookiecutter.aws_eb_type == "docker" %}inside of the docker container{% endif %}.
+
+{% if cookiecutter.aws_eb_type == "docker" %}
+**The script needs to be run as root**, to be able to access the docker container
+{% endif %}
 
 
 {% if cookiecutter.aws_eb_type == "docker" %}
