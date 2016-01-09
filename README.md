@@ -9,19 +9,26 @@ The template let you choose if you want to use a AWS EB
 ## What you get
 
 * README.md with instructions that will get you started to deploy your django app on AWS EB
-* 
+* A working local environment
+* Dockerfile (in both Python and Docker version)
 
-, and either Docker or Python specific setup with your choice of django
-version. The Docker container runs **uwsgi+nginx**
+## Should I choose Python or Docker deployment?
 
-Some basic setup for getting a working AWS EB Docker Django deployment. The docker container runs **uwsgi+nginx** and
-exposes port 80 that is mapped to the AWS Elastic Load Balancer. Of course you optionally get a working local
-development environment as well.
+For simplicity you should choose Python deployment, as it is supported. However, there are some problems with
+the way how the Python deployment option is configured, such as /static/ is always mapped in their Apache configuration
+to a path, that needs a workaround for Whitenoise to work. 
+[Take a look at this post at Stackoverflow](http://stackoverflow.com/a/34669173/788022).
+
+The Docker deployment gives you more flexibility, such as you might wanna add something else that runs in the Docker
+container. And you can get a quite nice local Docker to AWS EB deployment parity. Meaning, if it works in the Docker
+container, you most probably have it working in deployment. The 
+[EB CLI](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html) gives you possibility to try out the
+deployment locally.
 
 
 ## What is next after using this cookiecutter?
 
-Take a look at the generated README.md for information how to start up your first AWS Elastic Beanstalk app deployment.
+Take a look at the generated README.md for information how to deploy up your django app on AWS Elastic Beanstalk.
 
 
 ## Template variables
@@ -55,7 +62,7 @@ Windows users, sorry, don't think this will work for you :) Pull requests for Wi
 ## The hooks
 
 You should take a look at the hooks, so you know that it will not do anything harmful. If you think it does
-something harmful, please create a ticket!
+something harmful, [please create a ticket](https://github.com/dolphinkiss/cookiecutter-django-aws-eb/issues/new)!
 
 ### hooks/pre_gen_project.sh
 
@@ -64,6 +71,8 @@ version inside of the virtualenvironment. Then it will run *django-admin.py star
 
 It will also assure that you have virtualenv available on your path. If **setup_local_env=yes** then it will also
 assure that createdb is on your path.
+
+In case **aws_ebs_type!=docker**, the Dockerrun.aws.json file will be deleted.
 
 ### hooks/post_gen_project.sh
 
