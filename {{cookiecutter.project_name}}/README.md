@@ -1,8 +1,9 @@
-# {{ cookiecutter.project_name }}
+# {{ cookiecutter.project_name|upper }}
 
 ## Usage
 
-For instruction on how to use the EB CLI, visit (http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html)
+For instruction on how to use the EB CLI, visit the 
+[EB CLI](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html) documenation.
 
 ### eb
 
@@ -40,12 +41,19 @@ Create a superuser, and you should be able to login:
 # sudo docker exec -it <CONTAINER ID> /app/.vedocker/bin/python /app/manage.py createsuperuser
 ```
 
+### Running management commands on the EC2 instances
 
+There is a script located at /home/ec2-user/django-manage.sh that you can use to run management commands
+{% if cookiecutter.aws_ebs_type == "docker" %}inside of the docker container{% endif %}.
+
+
+{% if cookiecutter.aws_ebs_type == "docker" %}
 ### eb local
 
 If you have docker installed, you can run the container locally. The DJANGO_ALLOWED_HOSTS setting in eb local mode 
-refers to the IP address of the host machine, or in case of OSX the virtual machines shared IP. DJANGO_DATABASE_URL
-is also required. See https://github.com/kennethreitz/dj-database-url#url-schema for supported formats.
+should be set to the IP address of the host machine, or in case of OSX the virtual machines shared IP. 
+DJANGO_DATABASE_URL is also required. See https://github.com/kennethreitz/dj-database-url#url-schema for supported 
+formats.
 
 ```
 # eb init
@@ -64,7 +72,7 @@ In a separate terminal do this, and after that try to login.
 # docker exec <CONTAINER ID> /app/.vedocker/bin/python /app/manage.py migrate --noinput
 # docker exec -it <CONTAINER ID> /app/.vedocker/bin/python /app/manage.py createsuperuser
 ```
-
+{% endif %}
 
 {% if cookiecutter.setup_local_env == "yes" %}
 ### Local runserver setup
@@ -91,10 +99,3 @@ The Django project created by this, has minimal settings, and not configured to 
 
 Remember that using AWS Elastic Beanstalk will cause charges on your AWS account. If you are a new user, you can use
 the free tier for one year.
-
-
-
-
-## Stuff to add related to python environment
-
-/home/ec2-user/django-manage.sh is script for running management commands
