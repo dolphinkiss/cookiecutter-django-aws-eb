@@ -1,12 +1,18 @@
-# cookiecutter template for Django on AWS Elastic Beanstalk Docker
+# cookiecutter template for Django on AWS Elastic Beanstalk (EB)
 
-This template is for you whom might want to get a Django app running on AWS Elastic Beanstalk with Docker. 
+This cookiecutter template is for you whom might want to get a Django app running on AWS Elastic Beanstalk.
 
-Using AWS EB Docker deployments is not the only way to get your Django app running on AWS, take a look at their
-Python app support: (http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-apps.html).
-
+The template let you choose if you want to use a AWS EB 
+[Docker](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-apps.html) deployment or 
+[Python](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create-deploy-python-apps.html) deployment.
 
 ## What you get
+
+* README.md with instructions that will get you started to deploy your django app on AWS EB
+* 
+
+, and either Docker or Python specific setup with your choice of django
+version. The Docker container runs **uwsgi+nginx**
 
 Some basic setup for getting a working AWS EB Docker Django deployment. The docker container runs **uwsgi+nginx** and
 exposes port 80 that is mapped to the AWS Elastic Load Balancer. Of course you optionally get a working local
@@ -20,8 +26,9 @@ Take a look at the generated README.md for information how to start up your firs
 
 ## Template variables
 
+* **aws_ebs_type**:    if you want EB python or docker setup
 * **project_name**:    django project name, just like in startproject
-* **django_version**:  what django version to install.
+* **django_version**:  what django version to install
 * **setup_local_env**: if we should keep the virtualenvironment with requirements/local.txt installed and
   create postgres database
 * **virtualenv_bin**:  location to virtualbin binary, in case it is not in your path, or if you wanna use some other
