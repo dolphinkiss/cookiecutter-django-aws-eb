@@ -41,6 +41,15 @@ Create a superuser, and you should be able to login:
 # sudo docker exec -it <CONTAINER ID> /app/.vedocker/bin/python /app/manage.py createsuperuser
 ```
 
+#### Logs
+
+You will view logs from the instances by running **eb logs**. 
+
+{% if cookiecutter.aws_eb_type == "docker" %}
+Docker container logs are located at **/var/log/eb-docker/containers/eb-current-app**.
+{% endif %}
+
+
 ### Running management commands on the EC2 instances
 
 There is a script located at /home/ec2-user/django-manage.sh that you can use to run management commands
