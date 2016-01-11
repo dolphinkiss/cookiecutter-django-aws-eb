@@ -50,4 +50,8 @@ if [ "{{ cookiecutter.aws_eb_type }}" != "docker" ]; then
     rm Dockerrun.aws.json
 fi
 
+if [ "{{ cookiecutter.aws_eb_type }}" != "python" ]; then
+    rm requirements.txt
+fi
+
 echo "---> DONE Running post-hook script..."
