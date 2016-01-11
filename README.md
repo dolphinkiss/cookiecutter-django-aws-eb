@@ -1,4 +1,4 @@
-# cookiecutter template for Django on AWS Elastic Beanstalk (EB)
+# Cookiecutter template for Django deployment on AWS Elastic Beanstalk (EB)
 
 This cookiecutter template is for you whom might want to get a Django app running on AWS Elastic Beanstalk.
 
