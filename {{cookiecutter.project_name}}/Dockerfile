@@ -26,7 +26,7 @@ RUN /app/.vedocker/bin/pip install -r /requirements/production.txt
 # Adding application code
 #######################################################
 
-ADD . /app/
+ADD {{ cookiecutter.source_root }} /app/
 RUN /app/.vedocker/bin/python /app/manage.py collectstatic --noinput
 
 #######################################################

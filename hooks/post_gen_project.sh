@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source_root="{{ cookiecutter.source_root }}"
+
 # functions
 do_createdb() {
     # attempt to create the postgres database
@@ -14,19 +16,20 @@ do_install_local_requirements() {
 }
 
 do_patch_settings_and_manage_py() {
-    mv "settings" "{{ cookiecutter.project_name }}/"
+    mv "settings" "$source_root/{{ cookiecutter.project_name }}/"
 
-    WSGI_PATH="{{ cookiecutter.project_name }}/wsgi.py"
-    COMMON_SETTINGS="{{ cookiecutter.project_name }}/settings/common.py"
+    WSGI_PATH="$source_root/{{ cookiecutter.project_name }}/wsgi.py"
+    MANAGE_PATH="$source_root/manage.py"
+    COMMON_SETTINGS="$source_root/{{ cookiecutter.project_name }}/settings/common.py"
 
-    mv "{{ cookiecutter.project_name }}/settings.py" "$COMMON_SETTINGS"
+    mv "$source_root/{{ cookiecutter.project_name }}/settings.py" "$COMMON_SETTINGS"
     cat "settings_extra.py" >> "$COMMON_SETTINGS" && rm "settings_extra.py"
 
-    sed -i "" -e "s/{{ cookiecutter.project_name }}.settings/{{ cookiecutter.project_name }}.settings.local/g" "manage.py" "$WSGI_PATH"
+    sed -i "" -e "s/{{ cookiecutter.project_name }}.settings/{{ cookiecutter.project_name }}.settings.local/g" "$MANAGE_PATH" "$WSGI_PATH"
 }
 
 do_patch_wsgi_py_whitenoise() {
-    WSGI_PATH="{{ cookiecutter.project_name }}/wsgi.py"
+    WSGI_PATH="$source_root/{{ cookiecutter.project_name }}/wsgi.py"
     cat "wsgi_extra.py" >> "$WSGI_PATH" && rm "wsgi_extra.py"
 }
 

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source_root="{{ cookiecutter.source_root }}"
 
 require_program() {
     theprogram="$1"
@@ -19,7 +20,7 @@ if [ "{{ cookiecutter.setup_local_env }}" == "yes" ]; then
 fi
 
 {{ cookiecutter.virtualenv_bin }} .ve
-.ve/bin/pip install -q django=={{ cookiecutter.django_version }}
-.ve/bin/django-admin.py startproject -v 0 "{{ cookiecutter.project_name }}" .
+.ve/bin/pip install -q "django=={{ cookiecutter.django_version }}"
+mkdir "$source_root" && .ve/bin/django-admin.py startproject -v 0 "{{ cookiecutter.project_name }}" "{{ cookiecutter.source_root }}"
 
 echo "---> DONE Running pre-hook script..."

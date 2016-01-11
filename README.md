@@ -33,13 +33,15 @@ Take a look at the generated README.md for information how to deploy up your dja
 
 ## Template variables
 
-* **aws_eb_type**:    if you want EB python or docker setup
+* **aws_eb_type**:     if you want EB python or docker setup
 * **project_name**:    django project name, just like in startproject
 * **django_version**:  what django version to install
 * **setup_local_env**: if we should keep the virtualenvironment with requirements/local.txt installed and
   create postgres database
 * **virtualenv_bin**:  location to virtualbin binary, in case it is not in your path, or if you wanna use some other
   virtualenv binary
+* **source_root**:  relative location where the source code should end up, default is ".". Example use src to get all
+  the django code to reside in src/ directory.
 
 
 ## Prerequisites
