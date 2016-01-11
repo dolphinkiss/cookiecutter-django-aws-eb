@@ -98,13 +98,13 @@ In a separate terminal do this, and after that try to login.
 {% if cookiecutter.setup_local_env == "yes" %}
 ### Local runserver setup
 
-**Settings file**: {{ cookiecutter.project_name }}/settings/local.py
+**Settings file**: {{ cookiecutter.source_root }}/{{ cookiecutter.project_name }}/settings/local.py
 
 ```
 # source .ve/bin/activate
-# ./manage.py migrate
-# ./manage.py collectstatic
-# ./manage.py runserver
+# {{ cookiecutter.source_root }}/manage.py migrate
+# {{ cookiecutter.source_root }}/manage.py collectstatic
+# {{ cookiecutter.source_root }}/manage.py runserver
 ```
 
 {% endif %}
