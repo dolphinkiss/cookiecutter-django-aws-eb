@@ -35,8 +35,8 @@ RUN /app/.vedocker/bin/python /app/manage.py collectstatic --noinput
 
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
-ADD deploy/supervisor_django.conf /etc/supervisor/conf.d/app.conf
-ADD deploy/nginx.conf /etc/nginx/sites-available/app.conf
+ADD docker/supervisor_django.conf /etc/supervisor/conf.d/app.conf
+ADD docker/nginx.conf /etc/nginx/sites-available/app.conf
 
 RUN ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled
 RUN rm -f /etc/nginx/sites-enabled/default
