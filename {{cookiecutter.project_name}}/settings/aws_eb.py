@@ -23,6 +23,21 @@ DATABASES = {
     }
 }
 
+## email settings, comment out if you wanna send out emails from the system
+## Use AWS SES for example to get your emails functional
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = env('DJANGO_EMAIL_HOST')
+#EMAIL_HOST_USER = env('DJANGO_EMAIL_HOST_USER')
+#EMAIL_HOST_PASSWORD = env('DJANGO_EMAIL_HOST_PASSWORD')
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+
+## error reporting, see django error reporting documentation see, set the below to proper
+## values to reflect your
+## https://docs.djangoproject.com/en/1.9/howto/error-reporting/
+# ADMINS = [('Root Localhost', 'root@localhost')]
+# MANAGERS = ADMINS
+
 {% if cookiecutter.aws_eb_type == "python" %}
 # we should assure that we don't use /static/ in case we want to keep using whitenoise
 # as there is a default static handler on /static/ that cannot be removed for the moment.
