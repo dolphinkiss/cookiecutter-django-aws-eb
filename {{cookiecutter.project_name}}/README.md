@@ -68,6 +68,28 @@ There is a script located at **/home/ec2-user/django-manage.sh** that you can us
 {% endif %}
 
 
+#### Enable HTTPS
+
+Follow this guide: http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/configuring-https.html
+
+What it will do is to change the port that the load balancer listen to. If you follow the guide you will
+end up only accepting https, and http requests will not pass the load balancer. This is in most cases
+not wanted, as you probably want a permanent redirect (301) on http://DOMAIN/ to https://DOMAIN/.
+
+{% if cookiecutter.aws_eb_type == "docker" %}
+If you want to enable http -> https redirect in docker environment:
+
+* Enable http port in load balancer, together with https port
+* Uncomment the section about redirection in **docker/nginx.conf** and deploy the app again (**eb deploy**).
+  To understand the rule, you should read about [Elastic Load Balancer X-Forwarded HEaders](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/x-forwarded-headers.html#x-forwarded-proto)
+{% endif %}
+
+{% if cookiecutter.aws_eb_type == "python" %}
+If you want to enable http -> https redirect, I don't have the answer for you. If you have the answer, please
+make the changes and create a Pull Request :)
+{% endif %}
+
+
 {% if cookiecutter.aws_eb_type == "docker" %}
 ### eb local
 
