@@ -23,6 +23,13 @@ DATABASES = {
     }
 }
 
+# AWS EB Load Balancer will add X-Forwarded-Proto to headers for the incoming request
+# to http or https, depending on what the client requested. This is later used in django
+# request.is_secure() to determine if the request is secure or not. See:
+# https://docs.djangoproject.com/en/1.9/ref/settings/#secure-proxy-ssl-header
+# http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/x-forwarded-headers.html#x-forwarded-proto
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 ## email settings, comment out if you wanna send out emails from the system
 ## Use AWS SES for example to get your emails functional
 #EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

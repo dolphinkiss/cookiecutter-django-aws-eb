@@ -82,13 +82,16 @@ If you want to enable http -> https redirect in docker environment:
 * Enable http port in load balancer, together with https port
 * Uncomment the section about redirection in **docker/nginx.conf** and deploy the app again (**eb deploy**).
   To understand the rule, you should read about [Elastic Load Balancer X-Forwarded HEaders](http://docs.aws.amazon.com/ElasticLoadBalancing/latest/DeveloperGuide/x-forwarded-headers.html#x-forwarded-proto)
+
+settings.aws_eb is configured with **SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')** to make
+django request.is_secure() function properly in case you have enabled HTTPS. 
+
 {% endif %}
 
 {% if cookiecutter.aws_eb_type == "python" %}
 If you want to enable http -> https redirect, I don't have the answer for you. If you have the answer, please
 make the changes and create a Pull Request :)
 {% endif %}
-
 
 {% if cookiecutter.aws_eb_type == "docker" %}
 ### eb local
