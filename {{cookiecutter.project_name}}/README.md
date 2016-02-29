@@ -3,7 +3,7 @@
 ## Usage
 
 For instruction on how to use the EB CLI, visit the 
-[EB CLI](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html) documenation.
+[EB CLI](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3.html) documentation.
 
 ### eb
 
