@@ -21,6 +21,7 @@ fi
 
 {{ cookiecutter.virtualenv_bin }} .ve
 .ve/bin/pip install -q "django=={{ cookiecutter.django_version }}"
-mkdir "$source_root" && .ve/bin/django-admin.py startproject -v 0 "{{ cookiecutter.project_name }}" "{{ cookiecutter.source_root }}"
+mkdir "$source_root"
+.ve/bin/django-admin.py startproject -v 0 "{{ cookiecutter.project_name }}" "{{ cookiecutter.source_root }}"
 
 echo "---> DONE Running pre-hook script..."
